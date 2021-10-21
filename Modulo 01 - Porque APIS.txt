@@ -1,0 +1,48 @@
+01 - Apresentação
+Conceitos Gerais
+
+
+
+02 - Preparando o ambiente
+Download dos pacote .Net, Visual Studio, MySql e SqlSevre, Postman
+
+
+
+03 - Faça como eu fiz: Configurações iniciais
+Nesta atividade, você irá preparar o seu ambiente de desenvolvimento para dar continuidade ao curso. Inicialmente, abra o Visual Studio. Em seguida, escolha a opção “Criar um projeto”.
+Tela inicial do Visual Studio
+Após isso, utilize a barra de pesquisa e escreva “api”. Escolhendo a opção com a linguagem C#.
+
+Tela de seleção do tipo de projeto do Visual Studio
+Dê um nome para seu projeto. Para o curso, utilizamos o nome FilmesAPI. Aperte “Próximo”.
+Tela de definição de nome e caminho do projeto do Visual Studio
+Certifique-se de utilizar a versão .NET 5.0 e aperte em “Criar”.
+Tela final antes de criar o projeto no Visual Studio
+
+
+
+04 - O que é uma API
+Visa disponibilizar informações para outras aplicações
+Para consumir seus recursos é necessarios que siga as regras estabelecidas
+Abstarai detalhes da implementação
+Controla o que pode e o que não pode ser acessado
+
+
+05
+Sobre APIs
+PRÓXIMA ATIVIDADE
+
+APIs possuem finalidades específicas e diversas utilizações. Quais das alternativas abaixo mostram essas características?
+
+Abstraem detalhes de implementação para quem for consumir a API.
+Controlam o que pode/deve ser acessado.
+
+
+
+
+06 - O que aprendemos?
+Nessa aula aprendemos:
+As vantagens da utilização de uma API.
+Por quê e quando utilizar/desenvolver uma API.
+Como preparar o ambiente no Windows e Linux.
+

@@ -1,0 +1,32 @@
+
+
+Aprendizado de Api Rest Full - Com padrão arququetural
+Clientes : consumidores
+
+
+// link de especificaçoes de código API's https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+
+// link de especificaçoes de segurança API's : https://jwt.io/
+///https://datatracker.ietf.org/doc/html/rfc7519
+
+
+O que aprendemos?
+PRÓXIMA ATIVIDADE
+
+Nesta aula, aprendemos:
+
+Arquitetura da aplicação
+Inicio de roteamentos
+Como retornar JSON
+Outras maneiras de retornar JSON
+
+
+O que aprendemos?
+PRÓXIMA ATIVIDADE
+
+Nesta aula aprendemos:
+
+a importância de separar as funcionalidades da API em um controlador diferente do que retorna HTML
+a retornar códigos de status HTTP que façam sentido para a operação sendo executada
+utilizar o Postman para testar nossas requisições, principalmente aquelas que não sejam do tipo GET
