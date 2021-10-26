@@ -11,17 +11,17 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      //"launchBrowser": true, ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
-      //"launchUrl": "swagger", ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
+      "launchBrowser": true, ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
+      "launchUrl": "swagger", ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "FilmesAPI.Api": {
       "commandName": "Project",
-      //"dotnetRunMessages": "true", ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
-      //"launchBrowser": true, ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
-      //"launchUrl": "swagger", ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
+      "dotnetRunMessages": "true", ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
+      "launchBrowser": true, ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
+      "launchUrl": "swagger", ////Linhas comentadata para evitar que o navegador abra junto com a aplicação
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FilmesAPI.Api.Controllers
 {
@@ -10,22 +11,35 @@ namespace FilmesAPI.Api.Controllers
     public class FilmeController : ControllerBase
     {
         private static List<Filme> filmes = new List<Filme>();
+        private static int id = 1;
 
 
         [HttpPost] //Criar recurso no sistema
-        public void AdcionarFilme([FromBody]Filme filme)
+        public IActionResult AdcionarFilme([FromBody]Filme filme)
         {
-            ////Validação simples e manual dos parâmetros recebidos, ineficiente --> sobrecarregar a controller
-            //if (!string.IsNullOrEmpty(filme.Titulo))
-            //    filmes.Add(filme);
-            //else
-            //    Console.WriteLine("Não pode ter titulo em branco");
-
+            filme.Id = id++;
             filmes.Add(filme);
-            //Console.WriteLine(filme.Titulo);
+            return CreatedAtAction(nameof(RecuperaFilmePorId), new { Id = filme.Id}, filme); // Código de status(201)--> Ok - Retornando o status da requisição e onde o recurso foi criado no formato Json
         }
 
 
+        [HttpGet] //Retorna recurso do sistema
+        public IActionResult RecuperaFilme()
+        {  
+            return Ok(filmes);
+        }
 
+
+        [HttpGet("{id}")] //Retorna recurso do sistema por ID
+        public IActionResult RecuperaFilmePorId(int id)
+        {
+            //return filmes.FirstOrDefault(filme => filme.Id ==id); //Recurso da sintax c# -> using System.Linq;
+            Filme filme = filmes.FirstOrDefault(filme => filme.Id ==id);
+            if (filme != null)
+            {
+                Ok(filme); //Código de status (200)--> Ok - Retornando uma lista de livros no formato Json
+            }
+            return NotFound(); //Código de status (404)-->not found
+        }
     }
 }

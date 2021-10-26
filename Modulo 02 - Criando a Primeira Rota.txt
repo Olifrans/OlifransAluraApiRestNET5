@@ -231,6 +231,46 @@ POST
 
 
 
+06 - Faça como eu fiz: Adicionando restrições
+
+Nesta atividade, a proposta será você utilizar as anotações para adicionar restrições à requisição enviada pelo usuário. Inicialmente, abra a sua classe Filme:
+
+public class Filme
+{
+        public string Titulo { get; set; }
+public string Diretor { get; set; }
+        public string Genero { get; set; }
+public string Duracao { get; set; }
+}
+
+
+
+Agora, adicione a restrição de que o parâmetro Titulo deve ser obrigatório. O resultado deve ser algo como:
+
+public class Filme
+{
+    [Required]
+    public string Titulo { get; set; }
+    public string Diretor { get; set; }
+    public string Genero { get; set; }
+    public int Duracao { get; set; }
+}
+
+
+
+
+Para sermos mais expressivos com quem for consumir a API, podemos deixar mensagens mais claras de erro através do parâmetro ErrorMessage.
+
+public class Filme
+{
+    [Required(ErrorMessage = "O campo título é obrigatório")]
+    public string Titulo { get; set; }
+    public string Diretor { get; set; }
+    public string Genero { get; set; }
+    public int Duracao { get; set; }
+}
+
+Como desafio, tente sozinha/o utilizar as anotações StringLength e Range para definir o limite do tamanho do texto e valor numérico dos parâmetros. Caso tenha dúvidas, consulte o vídeo ou a opinião do instrutor abaixo.
 
 
 
@@ -240,6 +280,37 @@ POST
 
 
 
+07 - Praticando o uso de annotations
 
+O seguinte código foi escrito:
+
+public class Filme
+    {
+        [Required]
+        public string Titulo { get; set; }
+        [Required]
+        [Range(1, 120)]
+        public int Duracao { get; set; }
+        [StringLength(30)]
+        public string Diretor { get; set; }
+        public string Genero { get; set; }
+    }COPIAR CÓDIGO
+Qual das alternativas abaixo apresenta uma entrada válida para as anotações utilizadas acima?
+
+Selecione uma alternativa
+
+Titulo = "Alura Filmes - O retorno"
+Duracao = 90
+Diretor = "Luis"
+
+
+08 - O que aprendemos?
+Nessa aula aprendemos:
+
+Como enviar requisições para a API.
+Como preparar a API para receber requisições.
+A finalidade do verbo POST.
+Como criar um recurso no sistema.
+Como adicionar validações nos parâmetros enviados.
 
 

@@ -1,0 +1,79 @@
+01 - Projeto da aula anterior
+PRÓXIMA ATIVIDADE
+
+Caso queira, você pode baixar aqui o projeto do curso no ponto em que paramos na aula anterior.
+
+
+02 - Conectando ao Banco de Dados
+
+[00:00] Pessoal, o que precisamos fazer primeiro nesse vídeo? Nós precisamos de alguma maneira de comunicar a nossa aplicação, nossa API, ao banco de dados, mas como é que vamos conseguir fazer isso?
+
+[00:11] Precisa ter alguma maneira de estabelecer algum tipo de conexão para que nossa API consiga se comunicar, de preferência programaticamente para que consiga fazer isso de maneira mais simplificada.
+
+[00:24] Como é que nós vamos fazer isso? Vamos olhar o nosso código e nos momentos em que está executando alguma ação, como particionar o filme, retornar um filme; precisa fazer a partir da nossa base de dados.
+
+[00:39] Estamos levantando alguns problemas, precisa ter essa conexão com banco, ter essa tabela criada lá dentro, não vamos nos preocupar muito em como o banco de dados funciona porque não é o foco desse curso, mas de início vamos focar na questão da conexão.
+
+[00:53] Como eu chego e falo “aplicação API se conecte com uma SQL?” De início precisa adicionar alguns pacotes necessários para isso. E no caso vai utilizar o famoso nuget, se vier no nosso Visual Studio na parte de ferramentas.
+
+[01:15] Pode chegar no gerenciador de pacotes do nuget para a solução, vamos querer instalar, vamos em procurar não instalado, ele tem essa pegadinha. E nós vamos querer instalar entityFrameworkCore, vamos instalar na versão 5.0.5.
+
+[01:38] Caso você esteja fazendo esse curso e tenha nova versão, estamos utilizando a 5.0.5, vou marcar a versão, projeto que utilizo, vai instalar, dá um ok também, aceitar e também o outro pacote que vai instalar é o Microsoft.EntityFrameworkCore.Tools, já está marcado, vamos instalar também ok, aceitar.
+
+[02:08] Como vai fazer uma conexão com o banco MySQL, precisa também instalar quase o mesmo nome só que antes MySQL.EntityFrameworkCore. Esse pacote é necessário para que consiga abrir uma conexão utilizando entityFrameworkCore.
+
+[02:29] E com MySQL, esses são os pacotes necessários que vai utilizar neste momento e vai ter acesso aos imports necessários para fazer isso e como é que começa? Estou pregando sempre a questão de organização dentro do nosso projeto.
+
+[02:48] Vamos seguir sendo organizados, vamos criar uma pasta de data, de dados, como está com padrão de nome de pastas em inglês, nome da pasta data, vamos criar dentro uma nova classe que vai ser responsável por ter esse controle de contexto entre a nossa aplicação e o banco de dados.
+
+[03:15] Bem fácil, a nossa nova classe vai chamar ela de FilmeContext, porque afinal ela está sendo responsável por toda essa parte de contexto entre nossa aplicação e o banco de dados, public class FilmeContext para falar que ele é efetivamente um contexto está se comunicando entre nossa API e o banco de dados.
+
+[03:40] Precisa falar que ele é um DBContext, coloca na linha da “Alt + Enter” e ele vai sugerir: use Microsoft, simplesmente coloca e faz o importe. Nós criamos o nosso construtor.
+
+[04:00] Pode até utilizar o atalho do Visual Studio e vai criar nosso construtor, vai receber como parâmetro as opções - o que quero criar, precisa receber as opções contexto, DbContextOptions e qual o contexto estamos trabalhando?
+
+[04:20] Contexto do filmeContext, são as nossas opções. Mas não vai se preocupar com elas, só estamos recebendo esses parâmetros, essas opções.
+
+[04:35] Lembra dos cursos de orientação por objeto, vamos passar esse parâmetro para o Construtor do DBContext efetivamente, não precisa mais se preocupar com esse construtor já está tudo definido porque o Construtor da classe DBContext vai fazer esse papel para nós.
+
+[04:52] Teremos uma propriedade que vai ser do tipo DBset, ele é o nosso conjunto de dados do banco que vai conseguir fazer de maneira bem encapsulada, sem se preocupar com o acesso a esse banco de dados DBSet.
+
+[05:11] Vai ser de um filme, vai ser o objeto que queremos mapear e acessar dentro do nosso banco e pode chamar essa propriedade de Filmes, com a letra maiúscula, porque é uma propriedade.
+
+[05:22] Seguindo a convenção do CSharp, vamos colocar nosso get get; set, agora dá um “Alt + Enter” e consegue estabelecer o nosso modelo aqui dentro. Tem um detalhe ainda, que precisa atentar, se quisermos nos conectar a um banco de dados na nossa aplicação, precisa saber algumas coisas.
+
+[05:53] Como, por exemplo, onde está esse banco de dados? Eu preciso de algum tipo de autenticação para fazer isso? Sim. E como é que eu faço isso? Nesse momento precisa fazer o que precisa criar a nossa string de conexão com o banco.
+
+[06:09] Que vai informar qual é o endereço desse banco. Qual é o usuário, qual é a senha, qual é o banco em si de Dados que quer utilizar e como é que faz isso? Vamos definir através do AppSettingsJson onde definiremos algumas configurações para nossa aplicação.
+
+[06:27] E uma delas vai ser a nossa lista de Strings de conexão, já até sugere o nosso ConnectionStrings. Vamos criar FilmeConnection, para ter o mesmo padrão de nome de filme.
+
+[06:44] E qual vai ser o valor, como é que preenche? Bem simples, qual o servidor queremos acessar? O servidor onde está executando nosso banco, na nossa própria máquina e para fazer essa referência escreve localhost;.
+
+[07:03] Qual é o nome do banco que quer criar, acessar através da nossa API, vamos chamar de filmeDb, você pode dar o nome que você quiser também, mas eu estou tentando manter um padrãozinho.
+
+[07:16] Qual usuário do banco? Quando definimos o padrão, ele cria como root, qual é o password, é a que você definiu lá no momento da instalação do MySQL no segundo vídeo, senha é root, defini também.
+
+[07:32] Por fim, mas não menos importante, eu preciso utilizar string de conexão de alguma maneira, eu preciso falar para minha aplicação, API, que quando ela iniciar eu quero utilizar assistente de conexão para abrir uma conexão com o banco de dados.
+
+[07:50] Em qual dessas classes se olhar consegue fazer um startup, definir uma configuração de inicialização, exatamente no nosso. E como é que faz isso? Queremos configurar um serviço de acesso ao banco.
+
+[08:09] Nós já temos ConfigureService, dentro dele nós podemos fazer essa configuração de utilizar string do banco e fazer essa conexão, vamos colocar services.add - quero adicionar um contexto de banco de dados.
+
+[08:29] E qual contexto que quer adicionar? Em nosso filme, mas precisa passar algumas opções, ainda algumas configurações e quais são as opções?
+
+[08:40] Essas opções são de querermos utilizar uma SQL, ´UseMysql´ e para ele vamos passar a nossa string de conexão, como é que pega string de conexão? Podemos pegá-la através da configuração, nesse serviço, interface de configuração, a responsável por carregar nossas configurações.
+
+[09:12] Foram definidas no nosso arquivo de configurações e para fazer isso é bem simples. Coloca Configuration.GetConnectionString e qual conexão queremos pegar?
+
+[09:26] Uma string chamada Filme Connection filme Connection coloca o ponto-e-vírgula e ele está reclamando só dos nossos imports, dou “Alt + Enter” utilizando nosso filmeContext e a MySQL, dá um “Alt + Enter” para utilizar o MicrosoftFrameworkCore.
+
+[09:49] A princípio tudo está funcionando e se executar nossa aplicação o que que vai acontecer? Está executando e a princípio vou abrir meu abrir meu CMD, o que que vai acontecer?
+
+[10:03] Ela executou. Mas como consegue gravar o dado um filme, da nossa aplicação que está mandando para o nosso post para o nosso banco de dados, precisa ainda informar o banco como deve gravar essas informações.
+
+[10:19] Porque estamos utilizando uma lista estática e precisa utilizar esses métodos do nosso DBContext para salvar esses dados e recuperá-los também dentro do banco.
+
+[10:31] Antes de finalizar esse vídeo mais uma vez caso você esteja utilizando Linux eu vou deixar uma atividade extra, mostrando como você pode instalar os pacotes para ter o mesmo progresso desse vídeo. Como você não está utilizando Linux, você não tem a aba do nuget.
+
+[10:48] Conseguiremos resolver isso também. Vejo vocês no próximo vídeo. Faremos esse mapeamento de informações da nossa API para banco de dados, e até mais.
